@@ -26,3 +26,7 @@ app.prepare().then(() => {
     console.log('listening')
   })
 });
+
+// #to preview with now
+// npm run build
+// now --dotenv

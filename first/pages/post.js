@@ -9,10 +9,12 @@ const Post = ({post}) => {
     <div>
       <Header/>
       <Card>
-        <CardHeader title={post.title} />
+        <CardHeader title={post.title}/>
         <CardText>
-          {post.content}
-          <RaisedButton fullWidth primary>
+          <div>
+            {post.content}
+          </div>
+          <RaisedButton primary>
             <Link href={`/`} as={`/blog`}>
               <a>
                 go back
@@ -25,7 +27,7 @@ const Post = ({post}) => {
   );
 };
 
-Post.getInitialProps = async ({query: { id }}) => {
+Post.getInitialProps = async ({query: {id}}) => {
   const response = await fetch(`${process.env.BLOGGER_URL}/posts/${id}?key=${process.env.API_KEY}`);
   const post = await response.json();
   return {post}

@@ -4,9 +4,17 @@ import 'isomorphic-fetch';
 import {Card, CardHeader, CardText, RaisedButton} from 'material-ui';
 import Link from 'next/link';
 
+// Adding stylig to link is made by stylin <a> inside link in next
 const Index = ({posts}) => {
   return (
     <div>
+      <style jsx>
+        {`
+          .post-link {
+            color: white;
+          }
+        `}
+      </style>
       <Header/>
       {
         posts.map(post => {
@@ -14,9 +22,14 @@ const Index = ({posts}) => {
             <Card key={post.id}>
               <CardHeader title={post.title}/>
               <CardText>
-                <RaisedButton fullWidth primary>
+                <RaisedButton primary>
                   <Link href={`/post?id=${post.id}`} as={`/post?id=${post.id}`}>
+                    <a className="post-link" style={{
+                      textDecoration: 'none',
+                      fontSize: '22px',
+                    }}>
                       Click here to view
+                    </a>
                   </Link>
                 </RaisedButton>
               </CardText>
